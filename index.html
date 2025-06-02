@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неоновый Планировщик Задач</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="app-title">TASK PLANNER</h1>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-label">Красота</div>
+                    <div class="stat-value" id="stat-1">0/0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Точка силы</div>
+                    <div class="stat-value" id="stat-2">0/0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Продвижение</div>
+                    <div class="stat-value" id="stat-3">0/0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Финансы</div>
+                    <div class="stat-value" id="stat-4">0/0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Рутина</div>
+                    <div class="stat-value" id="stat-5">0/0</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" id="search" class="form-control" placeholder="Поиск задач...">
+            </div>
+            <div class="filter-container">
+                <select id="categoryFilter" class="form-control">
+                    <option value="">Все категории</option>
+                    <option value="1">Красота</option>
+                    <option value="2">Точка силы</option>
+                    <option value="3">Продвижение</option>
+                    <option value="4">Финансы</option>
+                    <option value="5">Рутина</option>
+                </select>
+            </div>
+            <button id="addTaskBtn" class="add-task-btn">+ ДОБАВИТЬ ЗАДАЧУ</button>
+        </div>
+
+        <div class="month-header" id="monthHeader">
+            <!-- Здесь будет заголовок месяца и кнопки навигации -->
+        </div>
+
+        <div class="month-grid" id="monthGrid">
+            <!-- Здесь будет сетка месяца -->
+        </div>
+    </div>
+
+    <!-- Модальное окно для добавления/редактирования задачи -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Добавить задачу</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle" class="form-label">Название задачи</label>
+                        <input type="text" id="taskTitle" class="form-control" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskCategory" class="form-label">Категория</label>
+                        <select id="taskCategory" class="form-control" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="1">Красота</option>
+                            <option value="2">Точка силы</option>
+                            <option value="3">Продвижение</option>
+                            <option value="4">Финансы</option>
+                            <option value="5">Рутина</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDate" class="form-label">Дата</label>
+                        <input type="date" id="taskDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskTime" class="form-label">Время</label>
+                        <select id="taskTime" class="form-control">
+                            <option value="">Выберите время</option>
+                            <option value="all-day">Весь день</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                            <option value="22:00">22:00</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn--secondary" id="cancelBtn">Отмена</button>
+                        <button type="submit" class="btn btn--primary">Добавить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра деталей задачи -->
+    <div class="modal-overlay" id="taskDetailsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Детали задачи</h2>
+                <button class="close-btn" id="closeDetailsModal">&times;</button>
+            </div>
+            <div class="modal-body" id="taskDetailsContent">
+                <!-- Здесь будет содержимое деталей задачи -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
